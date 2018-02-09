@@ -23,8 +23,20 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="modifieMenu">
+    <property name="title">
+     <string>Modifier</string>
+    </property>
+    <addaction name="deleteElementAction"/>
+   </widget>
+   <addaction name="modifieMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="deleteElementAction">
+   <property name="text">
+    <string>Suprimer l'élément</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

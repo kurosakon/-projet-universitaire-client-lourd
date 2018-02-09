@@ -14,13 +14,17 @@ SOURCES += main.cpp \
     infoelement.cpp \
     element.cpp \
     list.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    listmodel.cpp \
+    tree.cpp
 
 HEADERS += \
     infoelement.h \
     element.h \
     list.h \
-    mainwindow.h
+    mainwindow.h \
+    listmodel.h \
+    tree.h
 
 CONFIG += c++14
 
