@@ -14,6 +14,7 @@ protected:
 
 public:
     Element(const InfoElement & _info,List * _parent);
+    ~Element();
 
     QString         getTitle()const;
     List *          getParent();

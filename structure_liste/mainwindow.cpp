@@ -1,10 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QCoreApplication>
 #include <QApplication>
 #include <QSplitter>
-#include<iostream>
+#include <iostream>
 
 #include "list.h"
 
@@ -36,7 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    model=new ListModel(bdd());
+    root=bdd();
+    model=new ListModel(root);
     tree=new Tree(model);
 
     QSplitter *splitter = new QSplitter(this);
@@ -64,10 +64,6 @@ MainWindow::~MainWindow()
 void MainWindow::deleteElement(){
     QWidget * tmp=QApplication::focusWidget();
     if(tree==tmp){
-//          appeler le fonction delete sur le bon element
-//        QModelIndex index = tree->selectionModel()->currentIndex();
-//        QAbstractItemModel *model = tree->model();
-//        std::cout<<index.row()<<std::endl;
     }
     std::cout<<"Ceci est une fonction pas encore construite"<<std::endl;
 

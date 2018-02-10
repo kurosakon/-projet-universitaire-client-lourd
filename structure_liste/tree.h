@@ -1,9 +1,9 @@
 #ifndef TREE_H
 #define TREE_H
 
-#include <QTreeView>
-
 #include "listmodel.h"
+
+#include <QTreeView>
 
 class Tree:public QTreeView
 {

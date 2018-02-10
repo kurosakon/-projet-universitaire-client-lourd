@@ -1,13 +1,6 @@
-#include <QApplication>
-#include <QHBoxLayout>
-#include<iostream>
-#include <QPushButton>
-#include <QAction>
-
-
 #include "mainwindow.h"
 
-
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {

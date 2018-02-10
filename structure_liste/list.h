@@ -17,6 +17,7 @@ public:
     void                        appendChild(Element * newChild); //ajoute un enfant (a la fin du vecteur)
     Element *                   child(int index);
     int                         childCount()const; //nombre d'enfants
+    bool                        removeChild(int position);
 };
 
 #endif // LIST_H

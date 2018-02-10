@@ -6,6 +6,9 @@ List::List(InfoElement _info, List * _parent):Element(_info,_parent),children()
 }
 
 List::~List(){
+    for(unsigned int i=0;i<children.size();i++)
+        delete children[i];
+    children.clear();
     //TODO détruire tout les fils en même temps ou pas ?
 }
 
@@ -22,4 +25,14 @@ Element * List::child(int index){
 
 int List::childCount()const{
     return (int)children.size();
+}
+
+bool List::removeChild(int position)
+{
+    if (position < 0 || position> (int)children.size())
+        return false;
+
+    delete children[position];
+
+    return true;
 }

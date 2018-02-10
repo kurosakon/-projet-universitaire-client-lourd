@@ -1,9 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "tree.h"
+
 #include <QMainWindow>
 
-#include "tree.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +17,7 @@ class MainWindow : public QMainWindow
 public:
     Tree *          tree;
     ListModel *     model;
+    List *          root;
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

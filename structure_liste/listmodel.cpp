@@ -3,7 +3,6 @@
 
 #include <QStringList>
 #include <QIcon>
-
 ListModel::ListModel(List * root, QObject *parent)
     : QAbstractItemModel(parent)
 {
@@ -12,8 +11,7 @@ ListModel::ListModel(List * root, QObject *parent)
 
 ListModel::~ListModel()
 {
-    //TODO : voir où les listes doivent être détruite
-    //delete rootItem;
+    //sert surement à rien
 }
 
 QVariant ListModel::data(const QModelIndex &index, int role) const
