@@ -6,17 +6,19 @@
 #include <iostream>
 
 #include "list.h"
+#include "postit.h"
+#include "listgraphics.h"
 
 //juste une fonction pour tester linterface. ca renvoit une liste remplit
 List * bdd(){
-    List * l1=new List(InfoElement("courses","","",""));
-        List * l21=new List(InfoElement("lundi","","",""),l1);
-            List * l211=new List(InfoElement("bouffe","","",""),l21);
-                Element * l2111=new Element(InfoElement("cornichon","","",""),l211);
-                Element * l2112=new Element(InfoElement("mayo","","",""),l211);
-            Element * l212=new Element(InfoElement("magazine","","",""),l21);
-        List * l22=new List(InfoElement("mardi","","",""),l1);
-        List * l23=new List(InfoElement("mercredi","","",""),l1);
+    List * l1=new List(InfoElement("courses","","",""),1);
+        List * l21=new List(InfoElement("lundi","description","1/1/1","2/2/2"),2,l1);
+            List * l211=new List(InfoElement("bouffe","","",""),3,l21);
+                Element * l2111=new Element(InfoElement("cornichon","","",""),l211,4);
+                Element * l2112=new Element(InfoElement("mayo","","",""),l211,5);
+            Element * l212=new Element(InfoElement("magazine","","",""),l21,6);
+        List * l22=new List(InfoElement("mardi","","",""),7,l1);
+        List * l23=new List(InfoElement("mercredi","","",""),8,l1);
     l1->appendChild(l21);
     l1->appendChild(l22);
     l1->appendChild(l23);
@@ -38,11 +40,11 @@ MainWindow::MainWindow(QWidget *parent) :
     root=bdd();
     model=new ListModel(root);
     tree=new Tree(model);
+    lg=new ListGraphics(root);
 
     QSplitter *splitter = new QSplitter(this);
     splitter->addWidget(tree);
-    //TODO : ajouter le widget de droite ici
-    //splitter->addWidget(TRUC);
+    splitter->addWidget(lg);
     setCentralWidget(splitter);
 
     updateActions();

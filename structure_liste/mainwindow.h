@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "tree.h"
+#include "listgraphics.h"
 
 #include <QMainWindow>
 
@@ -18,6 +19,7 @@ public:
     Tree *          tree;
     ListModel *     model;
     List *          root;
+    ListGraphics *  lg;
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

@@ -1,7 +1,7 @@
 #include "list.h"
 
-Element::Element(const InfoElement & _info,List * _parent):
-    type(ELEMENT),parent(_parent),info(_info)
+Element::Element(const InfoElement & _info,List * _parent, int id):
+    type(ELEMENT),parent(_parent),info(_info), identifiant(id)
 {
 }
 
@@ -18,7 +18,22 @@ QString Element::getTitle()const{
     return info.title;
 }
 
-List * Element::getParent(){
+QString Element::getDescription()const
+{
+    return info.description;
+}
+
+QString Element::getCreationDate()const
+{
+    return info.creationDate;
+}
+
+QString Element::getModifDate()const
+{
+    return info.modificationDate;
+}
+
+List * Element::getParent()const{
     return parent;
 }
 
@@ -33,6 +48,11 @@ int Element::getNumberInParentList()const{
         }
     }
     return 0;
+}
+
+int Element::getId()const
+{
+    return identifiant;
 }
 
 bool Element::isList()const{

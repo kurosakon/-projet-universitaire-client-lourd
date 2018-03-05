@@ -1,6 +1,9 @@
 #include "mainwindow.h"
+#include "listgraphics.h"
 
 #include <QApplication>
+
+
 
 int main(int argc, char *argv[])
 {
