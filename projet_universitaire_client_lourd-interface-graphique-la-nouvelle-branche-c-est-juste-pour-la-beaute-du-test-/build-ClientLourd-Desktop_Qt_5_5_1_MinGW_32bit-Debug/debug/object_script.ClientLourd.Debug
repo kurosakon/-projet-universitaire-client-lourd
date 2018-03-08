@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\infoelement.o
+./debug\element.o
+./debug\list.o
+./debug\mainwindow.o
+./debug\listmodel.o
+./debug\tree.o
+./debug\listgraphics.o
+./debug\connectionWidget.o
+./debug\datamanager.o
+./debug\moc_mainwindow.o
+./debug\moc_listmodel.o
+./debug\moc_listgraphics.o
+./debug\moc_connectionWidget.o
+);

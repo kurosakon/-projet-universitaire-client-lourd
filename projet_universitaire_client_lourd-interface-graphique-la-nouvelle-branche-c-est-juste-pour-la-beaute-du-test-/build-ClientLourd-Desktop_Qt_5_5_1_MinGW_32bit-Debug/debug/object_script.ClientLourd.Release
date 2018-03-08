@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\infoelement.o
+./release\element.o
+./release\list.o
+./release\mainwindow.o
+./release\listmodel.o
+./release\tree.o
+./release\listgraphics.o
+./release\connectionWidget.o
+./release\datamanager.o
+./release\moc_mainwindow.o
+./release\moc_listmodel.o
+./release\moc_listgraphics.o
+./release\moc_connectionWidget.o
+);
