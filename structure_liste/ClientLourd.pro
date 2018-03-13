@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     list.cpp \
     mainwindow.cpp \
     listmodel.cpp \
-    tree.cpp
+    tree.cpp \
+    admin.cpp \
+    user.cpp
 
 HEADERS += \
     infoelement.h \
@@ -24,7 +26,9 @@ HEADERS += \
     list.h \
     mainwindow.h \
     listmodel.h \
-    tree.h
+    tree.h \
+    admin.h \
+    user.h
 
 CONFIG += c++14
 
