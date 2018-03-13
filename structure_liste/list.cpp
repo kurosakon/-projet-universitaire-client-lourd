@@ -1,6 +1,6 @@
 #include "list.h"
 
-List::List(InfoElement _info, List * _parent):Element(_info,_parent),children()
+List::List(InfoElement _info,  int id, List * _parent):Element(_info, id,_parent),children()
 {
     type=LIST;
 }
@@ -35,4 +35,63 @@ bool List::removeChild(int position)
     delete children[position];
 
     return true;
+}
+
+
+Element* List::findById(int id)
+{
+    //TODO : chercher aussi dans les enfants (recursivement par exemple) si c'est le but de la fonction ?
+    for(unsigned int i=0;i<children.size();i++)
+    {
+        if(children[i]->getId()==id)
+        {
+            return children[i];
+        }
+    }
+    return NULL;
+}
+
+bool List::inList(int id)
+{
+//TODO : chercher aussi dans les enfants (recursivement par exemple) si c'est le but de la fonction ?
+    for(unsigned int i=0;i<children.size();i++)
+    {
+        if(children[i]->getId()==id)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+QString List::getTitleOf(int index)
+{
+    if (index<(int)children.size())
+        return children[index]->getTitle();
+    else
+        return "error \"getTitleOf\" out of range";
+}
+
+QString List::getDescriptionOf(int index)
+{
+    if (index<(int)children.size())
+        return children[index]->getDescription();
+    else
+        return "error \"getDescriptionOf\" out of rang";
+
+
+}
+QString List::getCreationDateOf(int index)
+{
+    if (index<(int)children.size())
+        return children[index]->getCreationDate();
+    else
+        return "error \"getCreationDateOf\" out of rang";
+}
+QString List::getModifDateOf(int index)
+{
+    if (index<(int)children.size())
+        return children[index]->getModifDate();
+    else
+        return "error \"getModifDateOf\" out of rang";
 }

@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include "tree.h"
+#include "listgraphics.h"
+#include "connectionWidget.h"
+#include "user.h"
 
 #include <QMainWindow>
 
@@ -18,6 +21,10 @@ public:
     Tree *          tree;
     ListModel *     model;
     List *          root;
+    ListGraphics *  lg;
+    User            user;
+
+
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -27,7 +34,9 @@ private:
 
 public slots:
    void             deleteElement();
+   void             connection();
    void             updateActions();
+   void             newListGraphic(const QModelIndex & index);
 };
 
 #endif // MAINWINDOW_H

@@ -2,6 +2,7 @@
 #define LIST_H
 
 #include "element.h"
+#include <QString>
 
 #include <vector>
 
@@ -11,13 +12,19 @@ private:
     std::vector<Element *>      children;
 
 public:
-    List(InfoElement _info, List * _parent=NULL);
+    List(InfoElement _info,  int id, List * _parent=NULL);
     ~List();
 
     void                        appendChild(Element * newChild); //ajoute un enfant (a la fin du vecteur)
     Element *                   child(int index);
     int                         childCount()const; //nombre d'enfants
     bool                        removeChild(int position);
+    Element *                   findById(int id);
+    bool                        inList(int id);
+    QString                     getTitleOf(int index);
+    QString                     getDescriptionOf(int index);
+    QString                     getCreationDateOf(int index);
+    QString                     getModifDateOf(int index);
 };
 
 #endif // LIST_H

@@ -39,7 +39,7 @@ Qt::ItemFlags ListModel::flags(const QModelIndex &index) const
     return QAbstractItemModel::flags(index);
 }
 
-QVariant ListModel::headerData(int section, Qt::Orientation orientation,
+QVariant ListModel::headerData(int , Qt::Orientation orientation,
                                int role) const
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -99,7 +99,7 @@ int ListModel::rowCount(const QModelIndex &parent) const
         return 0;
 }
 
-int ListModel::columnCount(const QModelIndex &parent) const
+int ListModel::columnCount(const QModelIndex &) const
 {
     return 1;
 }
@@ -111,3 +111,10 @@ bool ListModel::hasChildren()const
     return false;
 }
 
+
+Element * ListModel::getElement(const QModelIndex & index)const{
+    if (!index.isValid())
+        return NULL;
+    Element *item = static_cast<Element *>(index.internalPointer());
+    return item;
+}

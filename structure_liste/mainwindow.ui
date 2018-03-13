@@ -29,12 +29,24 @@
     </property>
     <addaction name="deleteElementAction"/>
    </widget>
+   <widget class="QMenu" name="menuConnection">
+    <property name="title">
+     <string>Connection</string>
+    </property>
+    <addaction name="connectionAction"/>
+   </widget>
    <addaction name="modifieMenu"/>
+   <addaction name="menuConnection"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="deleteElementAction">
    <property name="text">
     <string>Suprimer l'élément</string>
+   </property>
+  </action>
+  <action name="connectionAction">
+   <property name="text">
+    <string>Connection</string>
    </property>
   </action>
  </widget>

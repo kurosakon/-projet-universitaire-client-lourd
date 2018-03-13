@@ -6,17 +6,19 @@
 #include <iostream>
 
 #include "list.h"
+#include "postit.h"
+#include "listgraphics.h"
 
 //juste une fonction pour tester linterface. ca renvoit une liste remplit
 List * bdd(){
-    List * l1=new List(InfoElement("courses","","",""));
-        List * l21=new List(InfoElement("lundi","","",""),l1);
-            List * l211=new List(InfoElement("bouffe","","",""),l21);
-                Element * l2111=new Element(InfoElement("cornichon","","",""),l211);
-                Element * l2112=new Element(InfoElement("mayo","","",""),l211);
-            Element * l212=new Element(InfoElement("magazine","","",""),l21);
-        List * l22=new List(InfoElement("mardi","","",""),l1);
-        List * l23=new List(InfoElement("mercredi","","",""),l1);
+    List * l1=new List(InfoElement("courses","","",""),1);
+        List * l21=new List(InfoElement("lundi","description","1/1/1","2/2/2"),2,l1);
+            List * l211=new List(InfoElement("bouffe","","",""),3,l21);
+                Element * l2111=new Element(InfoElement("cornichon","","",""),4,l211);
+                Element * l2112=new Element(InfoElement("mayo","","",""),5,l211);
+            Element * l212=new Element(InfoElement("magazine","","",""),6,l21);
+        List * l22=new List(InfoElement("mardi","","",""),7,l1);
+        List * l23=new List(InfoElement("mercredi","","",""),8,l1);
     l1->appendChild(l21);
     l1->appendChild(l22);
     l1->appendChild(l23);
@@ -31,6 +33,7 @@ List * bdd(){
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+    user(""),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -38,11 +41,11 @@ MainWindow::MainWindow(QWidget *parent) :
     root=bdd();
     model=new ListModel(root);
     tree=new Tree(model);
+    lg=new ListGraphics(static_cast<List*>(root->child(0)));
 
     QSplitter *splitter = new QSplitter(this);
     splitter->addWidget(tree);
-    //TODO : ajouter le widget de droite ici
-    //splitter->addWidget(TRUC);
+    splitter->addWidget(lg);
     setCentralWidget(splitter);
 
     updateActions();
@@ -51,7 +54,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(tree->selectionModel(), &QItemSelectionModel::selectionChanged,this, &MainWindow::updateActions);
 
     connect(ui->deleteElementAction, &QAction::triggered, this, &MainWindow::deleteElement);
+    connect(ui->connectionAction, &QAction::triggered, this, &MainWindow::connection);
 
+
+    connect(tree,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(newListGraphic(QModelIndex)));
+
+    connection();
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +92,16 @@ void MainWindow::updateActions()
     }else{
         ui->deleteElementAction->setEnabled(false);
     }
+}
+
+void MainWindow::newListGraphic(const QModelIndex & index){
+    std::cout<<"fonction a completer plus tard (newListGraphic)"<<std::endl;
+    Element * element=model->getElement(index);
+    //if(element->isList())
+    //ouvrir le widget
+
+}
+
+void MainWindow::connection(){
+    ConnectionWidget * w=new ConnectionWidget(user,this);
 }

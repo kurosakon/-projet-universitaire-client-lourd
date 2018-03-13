@@ -18,6 +18,8 @@ SOURCES += main.cpp \
     listmodel.cpp \
     tree.cpp \
     admin.cpp \
+    connectionWidget.cpp \
+    listgraphics.cpp \
     user.cpp
 
 HEADERS += \
@@ -28,9 +30,12 @@ HEADERS += \
     listmodel.h \
     tree.h \
     admin.h \
+    connectionWidget.h \
+    listgraphics.h \
     user.h
 
 CONFIG += c++14
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    connectionWidget.ui

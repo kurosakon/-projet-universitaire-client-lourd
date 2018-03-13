@@ -1,7 +1,7 @@
 #include "user.h"
 
 User::User(QString _nickName,QString _password,bool _validated,bool _connected):
-role("USER"),nickName(_nickName),password(_password),validated(_validated),connected(_connected)
+role("USER"),validated(_validated),nickName(_nickName),password(_password),connected(_connected)
 {
 
 }
@@ -10,7 +10,9 @@ User::User(QString _nickName):nickName(_nickName)
 
 }
 
-
+User::~User()
+{
+}
 
 /* setters & getters */
 
