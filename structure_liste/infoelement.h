@@ -8,6 +8,10 @@ enum Type{
     LIST
 };
 
+enum Status{
+    RIEN
+};
+
 class InfoElement
 {
 public:
@@ -16,8 +20,9 @@ public:
     QString         creationDate;
     QString         modificationDate;
     std::vector<QString>    tags;
+    Status          status;
 
-    InfoElement(QString _title, QString _description, QString _creationDate, QString _modificationDate,const std::vector<QString> & tags={});
+    InfoElement(QString _title, QString _description, QString _creationDate, QString _modificationDate,Status _status=RIEN,const std::vector<QString> & tags={});
 };
 
 #endif // INFOELEMENT_H

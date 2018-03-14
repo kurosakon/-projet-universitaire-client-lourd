@@ -10,9 +10,10 @@ class List:public Element
 {
 private:
     std::vector<Element *>      children;
+    int                         accessRight;
 
 public:
-    List(InfoElement _info,  int id, List * _parent=NULL);
+    List(InfoElement _info,  int id, List * _parent=NULL,int accessRight=0);//accessRight de base a changer peut-etre
     ~List();
 
     void                        appendChild(Element * newChild); //ajoute un enfant (a la fin du vecteur)

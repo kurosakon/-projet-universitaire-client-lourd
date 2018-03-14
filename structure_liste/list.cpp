@@ -1,6 +1,6 @@
 #include "list.h"
 
-List::List(InfoElement _info,  int id, List * _parent):Element(_info, id,_parent),children()
+List::List(InfoElement _info,  int id, List * _parent,int _accessRight):Element(_info, id,_parent),children(),accessRight(_accessRight)
 {
     type=LIST;
 }

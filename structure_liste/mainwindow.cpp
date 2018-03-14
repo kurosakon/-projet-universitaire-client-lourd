@@ -58,6 +58,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     connect(tree,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(newListGraphic(QModelIndex)));
+    connect(tree,&QTreeView::customContextMenuRequested,this,&MainWindow::treeMenu);
 
     connection();
 }
@@ -72,14 +73,17 @@ MainWindow::~MainWindow()
 void MainWindow::deleteElement(){
     QWidget * tmp=QApplication::focusWidget();
     if(tree==tmp){
+        Element * element=model->getElement(tree->currentIndex());
+        delete element;
     }
-    std::cout<<"Ceci est une fonction pas encore construite"<<std::endl;
-
+    std::cout<<"Ceci est une fonction pas encore fini, vous venez peut-etre de faire de la merde"<<std::endl;
+    update();
     updateActions();
 }
 
 void MainWindow::updateActions()
 {
+    std::cout<<"updateAction"<<std::endl;
     QWidget * widget=QApplication::focusWidget();
     if(widget==tree)
     {
@@ -94,6 +98,14 @@ void MainWindow::updateActions()
     }
 }
 
+void MainWindow::treeMenu( const QPoint & pos ){
+
+    QMenu menu(this);
+    menu.addAction(ui->deleteElementAction);
+    QPoint pt(pos);
+    menu.exec( tree->mapToGlobal(pos) );
+}
+
 void MainWindow::newListGraphic(const QModelIndex & index){
     std::cout<<"fonction a completer plus tard (newListGraphic)"<<std::endl;
     Element * element=model->getElement(index);
@@ -104,4 +116,9 @@ void MainWindow::newListGraphic(const QModelIndex & index){
 
 void MainWindow::connection(){
     ConnectionWidget * w=new ConnectionWidget(user,this);
+}
+
+void MainWindow::update(){
+   //emit model->dataChanged(QModelIndex(),QModelIndex());
+   // tree->setModel(model);
 }
