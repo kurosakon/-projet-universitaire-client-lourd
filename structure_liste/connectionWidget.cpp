@@ -14,7 +14,6 @@ ConnectionWidget::ConnectionWidget(User & _user, QWidget *parent) :
     connect(ui->connection,SIGNAL(clicked(bool)),this,SLOT(connection(bool)));
     connect(ui->connectionWithoutId,SIGNAL(clicked(bool)),this,SLOT(connectionWithoutId(bool)));
 
-
     exec();
 }
 

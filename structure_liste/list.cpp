@@ -6,10 +6,9 @@ List::List(InfoElement _info,  int id, List * _parent,int _accessRight):Element(
 }
 
 List::~List(){
-    for(unsigned int i=0;i<children.size();i++)
-        delete children[i];
-    children.clear();
-    //TODO détruire tout les fils en même temps ou pas ?
+    while(childCount()>0)
+        delete children[0];
+    parent->removeChild(getNumberInParentList());
 }
 
 void List::appendChild(Element * newChild){
@@ -31,9 +30,7 @@ bool List::removeChild(int position)
 {
     if (position < 0 || position> (int)children.size())
         return false;
-
-    delete children[position];
-
+    children.erase(children.begin()+position);
     return true;
 }
 

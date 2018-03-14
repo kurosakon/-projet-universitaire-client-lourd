@@ -119,6 +119,9 @@ void MainWindow::connection(){
 }
 
 void MainWindow::update(){
-   //emit model->dataChanged(QModelIndex(),QModelIndex());
+    delete model;
+    model=new ListModel(root);
+    tree->setModel(model);
+    //emit model->dataChanged(QModelIndex(),QModelIndex());
    // tree->setModel(model);
 }

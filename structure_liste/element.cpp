@@ -9,9 +9,10 @@ Element::~Element(){
     if(type==LIST)
     {
         List * tmp=static_cast<List *>(this);
-        for(int i=0;i<tmp->childCount();i++)
-            delete tmp->child(i);
+        while(tmp->childCount()>0)
+            delete tmp->child(0);
     }
+    parent->removeChild(getNumberInParentList());
 }
 
 QString Element::getTitle()const{
