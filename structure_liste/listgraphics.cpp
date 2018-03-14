@@ -1,85 +1,35 @@
 #include "listgraphics.h"
 #include<iostream>
 
-
-ListGraphics::ListGraphics(List* l,int index, QWidget* parent):QWidget(parent),liste(l),expanded(false)
+ListGraphics::ListGraphics(List* l,QMdiArea * area, QWidget* parent):QWidget(parent),liste(l),expanded(false)
 {
-    area=new QMdiArea(this);
-    QWidget* w=new QWidget(area);
-    buttonExpand=new QPushButton("v",w);
-    buttonAdd=new QPushButton("+",w);
-    buttonDelete=new QPushButton("x",w);
-    txtDescription=new QLabel(liste->getDescriptionOf(index),w);
-    txtCreationDate=new QLabel("Créé le "+liste->getCreationDateOf(index), w);
-    txtModificationDate=new QLabel("Dernière modification le "+liste->getModifDateOf(index),w);
-    w->setWindowTitle(liste->getTitleOf(index));
+
+    buttonExpand=new QPushButton("v",this);
+    buttonAdd=new QPushButton("+",this);
+    buttonDelete=new QPushButton("x",this);
+    txtDescription=new QLabel(liste->getDescription(),this);
+    txtCreationDate=new QLabel("Créé le "+liste->getCreationDate(), this);
+    txtModificationDate=new QLabel("Dernière modification le "+liste->getModifDate(),this);
+    setWindowTitle(liste->getTitle());
 
     layout=new QGridLayout;
     layout->addWidget(txtCreationDate,0,0);
     layout->addWidget(txtModificationDate,0,2);
     layout->addWidget(txtDescription,1,0,2,2);
-    layout->addWidget(buttonExpand,2,0);
-    layout->addWidget(buttonAdd,2,1);
-    layout->addWidget(buttonDelete,2,2);
+    layout->addWidget(buttonExpand,3,0);
+    layout->addWidget(buttonAdd,3,1);
+    layout->addWidget(buttonDelete,3,2);
 
-    w->setLayout(layout);
+    setLayout(layout);
 
-    area->addSubWindow(w);
+    area->addSubWindow(this);
+    //TODO ameliorer l'ajout des fenetres.
+    //Pour le moment, y'a des risques que des fenêtres soient perdus sur la droite de la fenêtre
+    //Et du coup, sa serait un peu con de perdre nos fenêtres dans les abysses insondables de l'interface graphique
 
     txtCreationDate->setVisible(false);
     txtModificationDate->setVisible(false);
     txtDescription->setVisible(false);
-
-    if(!expanded[liste->getNumberInParentList()])
-    {
-         QObject::connect(buttonExpand,SIGNAL(clicked()),this,SLOT(expand()));
-    }
-    else if(expanded[liste->getNumberInParentList()])
-    {
-        QObject::connect(buttonExpand,SIGNAL(clicked()),this,SLOT(retract()));
-    }
-
-    QObject::connect(buttonAdd,SIGNAL(clicked()),this,SLOT(add()));
-    QObject::connect(buttonDelete,SIGNAL(clicked()),this,SLOT(del()));
-}
-
-
-ListGraphics::ListGraphics(List* l, QWidget* parent):QWidget(parent),liste(l),expanded(false)
-{
-    area=new QMdiArea(this);
-
-
-
-    for(int index=0;index<liste->childCount();index++)
-    {
-        QWidget* w=new QWidget(area);
-        buttonExpand=new QPushButton("v",w);
-        buttonAdd=new QPushButton("+",w);
-        buttonDelete=new QPushButton("x",w);
-        txtDescription=new QLabel(liste->getDescriptionOf(index),w);
-        txtCreationDate=new QLabel("Créé le "+liste->getCreationDateOf(index), w);
-        txtModificationDate=new QLabel("Dernière modification le "+liste->getModifDateOf(index),w);
-        w->setWindowTitle(liste->getTitleOf(index));
-
-        layout=new QGridLayout;
-        layout->addWidget(txtCreationDate,0,0);
-        layout->addWidget(txtModificationDate,0,2);
-        layout->addWidget(txtDescription,1,0,2,2);
-        layout->addWidget(buttonExpand,3,0);
-        layout->addWidget(buttonAdd,3,1);
-        layout->addWidget(buttonDelete,3,2);
-
-        w->setLayout(layout);
-
-        area->addSubWindow(w);
-        //TODO ameliorer l'ajout des fenetres.
-        //Pour le moment, y'a des risques que des fenêtres soient perdus sur la droite de la fenêtre
-        //Et du coup, sa serait un peu con de perdre nos fenêtres dans les abysses insondables de l'interface graphique
-
-        txtCreationDate->setVisible(false);
-        txtModificationDate->setVisible(false);
-        txtDescription->setVisible(false);
-    }
 
 
     //TODO Les slots fonctionnent que pour le dernier élément affiché (ce qui est logique vu l'implémentation). Du coup faudrait faire
@@ -99,6 +49,8 @@ ListGraphics::ListGraphics(List* l, QWidget* parent):QWidget(parent),liste(l),ex
     //TODO cf add et del
     QObject::connect(buttonAdd,SIGNAL(clicked()),this,SLOT(add()));
     QObject::connect(buttonDelete,SIGNAL(clicked()),this,SLOT(del()));
+
+    show();
 }
 
 void ListGraphics::expand()

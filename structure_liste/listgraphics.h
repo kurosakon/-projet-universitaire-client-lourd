@@ -33,11 +33,9 @@ private:
     QLabel* txtModificationDate;
     QWidget* windowList;
     QGridLayout* layout;
-    QMdiArea* area;
 
 public:
-    ListGraphics(List* l, int index, QWidget* parent=0);//Crée une fenetre contenant l'element a index
-    ListGraphics(List* l, QWidget* parent=0);//Affiche tout les elements, chacun dans une fenetre
+    ListGraphics(List* l,QMdiArea * area, QWidget* parent=0);//Affiche tout les elements, chacun dans une fenetre
 
 public slots:
     void add();//Ajoute un enfant

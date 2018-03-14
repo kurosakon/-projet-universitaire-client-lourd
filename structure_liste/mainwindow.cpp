@@ -6,7 +6,6 @@
 #include <iostream>
 
 #include "list.h"
-#include "postit.h"
 #include "listgraphics.h"
 
 //juste une fonction pour tester linterface. ca renvoit une liste remplit
@@ -33,19 +32,21 @@ List * bdd(){
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+    lgs(),
     user(""),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     root=bdd();
     model=new ListModel(root);
     tree=new Tree(model);
-    lg=new ListGraphics(static_cast<List*>(root->child(0)));
+
+    area=new QMdiArea();
 
     QSplitter *splitter = new QSplitter(this);
     splitter->addWidget(tree);
-    splitter->addWidget(lg);
+    lgs.push_back(new ListGraphics(static_cast<List *>(root->child(0)),area));
+    splitter->addWidget(area);
     setCentralWidget(splitter);
 
     updateActions();
@@ -89,10 +90,8 @@ void MainWindow::updateActions()
     {
         //a modifier pour que la suppression soit impossible pour certaines listes (a la racine par exemple)
         ui->deleteElementAction->setEnabled(true);
-
-        //je sais pas si ca sera util, ni meme a quoi sa sert
-        //bool hasCurrent = tree->selectionModel()->currentIndex().isValid();
-        //ui->deleteListAction->setEnabled(hasSelection);
+        //si l'utilisateur n'a pas les droits de modification, alors on disable
+        //TODO
     }else{
         ui->deleteElementAction->setEnabled(false);
     }
@@ -109,8 +108,12 @@ void MainWindow::treeMenu( const QPoint & pos ){
 void MainWindow::newListGraphic(const QModelIndex & index){
     std::cout<<"fonction a completer plus tard (newListGraphic)"<<std::endl;
     Element * element=model->getElement(index);
-    //if(element->isList())
-    //ouvrir le widget
+    if(element->isList()){
+        lgs.push_back(new ListGraphics(static_cast<List*>(element),area));
+        std::cout<<area->subWindowList().count()<<std::endl;
+        area->show();
+    }
+
 
 }
 

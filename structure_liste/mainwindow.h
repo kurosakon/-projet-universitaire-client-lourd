@@ -21,7 +21,8 @@ public:
     Tree *          tree;
     ListModel *     model;
     List *          root;
-    ListGraphics *  lg;
+    QMdiArea *      area;
+    std::vector<ListGraphics *>  lgs;
     User            user;
 
 
