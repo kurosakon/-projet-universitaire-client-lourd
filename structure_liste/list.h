@@ -13,12 +13,12 @@ private:
     int                         accessRight;
 
 public:
-    List(InfoElement _info,  int id, List * _parent=NULL,int accessRight=0);//accessRight de base a changer peut-etre
+    List(InfoElement _info,  int id, List * _parent=NULL,int accessRight=0);
     ~List();
 
-    void                        appendChild(Element * newChild); //ajoute un enfant (a la fin du vecteur)
+    void                        appendChild(Element * newChild);
     Element *                   child(int index);
-    int                         childCount()const; //nombre d'enfants
+    int                         childCount()const;
     bool                        removeChild(int position);
     Element *                   findById(int id);
     bool                        inList(int id);

@@ -62,3 +62,16 @@ bool Element::isList()const{
     else
         return false;
 }
+
+void Element::setDescription(QString s)
+{
+    info.description=s;
+}
+void Element::setTitle(QString s)
+{
+    info.title=s;
+}
+void Element::setModifDate(QString s)
+{
+    info.modificationDate=s;
+}

@@ -9,6 +9,7 @@ List::~List(){
     while(childCount()>0)
         delete children[0];
     parent->removeChild(getNumberInParentList());
+
 }
 
 void List::appendChild(Element * newChild){
@@ -74,7 +75,7 @@ QString List::getDescriptionOf(int index)
     if (index<(int)children.size())
         return children[index]->getDescription();
     else
-        return "error \"getDescriptionOf\" out of rang";
+        return "error \"getDescriptionOf\" out of range";
 
 
 }
@@ -83,12 +84,12 @@ QString List::getCreationDateOf(int index)
     if (index<(int)children.size())
         return children[index]->getCreationDate();
     else
-        return "error \"getCreationDateOf\" out of rang";
+        return "error \"getCreationDateOf\" out of range";
 }
 QString List::getModifDateOf(int index)
 {
     if (index<(int)children.size())
         return children[index]->getModifDate();
     else
-        return "error \"getModifDateOf\" out of rang";
+        return "error \"getModifDateOf\" out of range";
 }

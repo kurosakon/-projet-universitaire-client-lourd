@@ -34,10 +34,12 @@ private:
     Ui::MainWindow *ui;
 
 public:
-    void            update();//recharge les widgets (appres une modification d'une liste par exemple)
+    void            update();
 
 public slots:
    void             deleteElement();
+   void             addElement();
+   void             setElement();
    void             connection();
    void             updateActions();
    void             treeMenu( const QPoint & pos );

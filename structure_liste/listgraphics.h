@@ -2,18 +2,27 @@
 #define LISTGRAPHIC_H
 
 #include <QObject>
-#include<QApplication>
+#include <QApplication>
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
 #include <QWindow>
 #include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPlainTextEdit>
 #include <QDialog>
 #include <QMdiArea>
-#include<vector>
+#include <QRadioButton>
+#include <QDate>
+#include <QTime>
+#include <QMdiSubWindow>
+#include <QMessageBox>
+#include <iostream>
+#include <vector>
+#include <buttonenfant.h>
 #include "element.h"
 #include "list.h"
 
@@ -22,28 +31,31 @@ class ListGraphics:public QWidget
     Q_OBJECT
 private:
     List* liste;
-    std::vector<bool> expanded;//Pour savooir si les différents menbres de la liste sont deployés
-    QPushButton* buttonExpand;
-    QPushButton* buttonShowInfo;
     QPushButton* buttonAdd;
     QPushButton* buttonDelete;
+    QPushButton* buttonModif;
     QLabel* txtTitre;
     QLabel* txtDescription;
     QLabel* txtCreationDate;
     QLabel* txtModificationDate;
-    QWidget* windowList;
+    QLabel* txtEnfant;
     QGridLayout* layout;
+    QHBoxLayout* layoutButton;
+    QVBoxLayout* layoutEnfant;
+    QMdiArea* a;
+
+    void newElt(InfoElement e);
+    void newList(InfoElement e);
+    void delElt();
+
 
 public:
-    ListGraphics(List* l,QMdiArea * area, QWidget* parent=0);//Affiche tout les elements, chacun dans une fenetre
+    ListGraphics(List *l, QMdiArea * area, QWidget* parent=0);
 
 public slots:
-    void add();//Ajoute un enfant
-    void del();//Supprime l'element ET tout ses enfant
-    void expand();//"Déploie" l'élément (=Affiche les dates de creation, modif, et la description)
-    void retract();//"rétracte" l'élément (=Désaffiche les dates de creation, modif, et la description)
-
-
+    void add();
+    void del();
+    void modif();
 };
 
 #endif // LISTGRAPHIC_H

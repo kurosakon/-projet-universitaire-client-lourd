@@ -6,3 +6,5 @@ InfoElement::InfoElement(QString _title, QString _description, QString _creation
 
 }
 
+
+

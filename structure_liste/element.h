@@ -21,9 +21,12 @@ public:
     QString         getModifDate() const;
     QString         getCreationDate()const;
     QString         getDescription()const;
+    void            setDescription(QString s);
+    void            setTitle(QString s);
+    void            setModifDate(QString s);
     List *          getParent()const;
     int             getId()const;
-    int             getNumberInParentList()const; //position de l'element dans le vecteur de son parent
+    int             getNumberInParentList()const;
     bool            isList()const;
 
 };
