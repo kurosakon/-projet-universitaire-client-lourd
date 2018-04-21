@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="modifieMenu">
@@ -28,6 +28,8 @@
      <string>Modifier</string>
     </property>
     <addaction name="deleteElementAction"/>
+    <addaction name="addElementAction"/>
+    <addaction name="setElementAction"/>
    </widget>
    <widget class="QMenu" name="menuConnection">
     <property name="title">
@@ -35,18 +37,46 @@
     </property>
     <addaction name="connectionAction"/>
    </widget>
+   <widget class="QMenu" name="menuRechercher">
+    <property name="title">
+     <string>Rechercher</string>
+    </property>
+    <addaction name="titreRechercheAction"/>
+    <addaction name="tagRechercheAction"/>
+   </widget>
    <addaction name="modifieMenu"/>
    <addaction name="menuConnection"/>
+   <addaction name="menuRechercher"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="deleteElementAction">
    <property name="text">
-    <string>Suprimer l'élément</string>
+    <string>Supprimer</string>
    </property>
   </action>
   <action name="connectionAction">
    <property name="text">
     <string>Connection</string>
+   </property>
+  </action>
+  <action name="addElementAction">
+   <property name="text">
+    <string>Ajouter</string>
+   </property>
+  </action>
+  <action name="setElementAction">
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </action>
+  <action name="titreRechercheAction">
+   <property name="text">
+    <string>recherche par titre</string>
+   </property>
+  </action>
+  <action name="tagRechercheAction">
+   <property name="text">
+    <string>recherche par tags</string>
    </property>
   </action>
  </widget>

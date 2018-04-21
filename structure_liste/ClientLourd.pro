@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     admin.cpp \
     connectionWidget.cpp \
     listgraphics.cpp \
-    user.cpp
+    user.cpp \
+    buttonenfant.cpp
 
 HEADERS += \
     infoelement.h \
@@ -32,7 +33,8 @@ HEADERS += \
     admin.h \
     connectionWidget.h \
     listgraphics.h \
-    user.h
+    user.h \
+    buttonenfant.h
 
 CONFIG += c++14
 

@@ -12,6 +12,7 @@ protected:
     Type            type;
     List *          parent;
     InfoElement     info;
+    int             status;//1=element accomplie, 2=element en attente, autres valeurs=element annuler
 
 public:
     Element(const InfoElement & _info, int id,List * _parent);
@@ -21,9 +22,17 @@ public:
     QString         getModifDate() const;
     QString         getCreationDate()const;
     QString         getDescription()const;
+    QString         getTag1() const;
+    QString         getTag2() const;
+    int             getStatus() const;
+    void            setDescription(QString s);
+    void            setTitle(QString s);
+    void            setModifDate(QString s);
+    void            setTags(QString t1, QString t2);
+    void            setStatus(int i);
     List *          getParent()const;
     int             getId()const;
-    int             getNumberInParentList()const; //position de l'element dans le vecteur de son parent
+    int             getNumberInParentList()const;
     bool            isList()const;
 
 };

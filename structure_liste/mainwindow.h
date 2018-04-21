@@ -32,13 +32,20 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void closeChildren(QList<QMdiSubWindow*> l, List* list);
+    void rechercheTi(QVBoxLayout* layout, QString txt, Element *elt);
+    void rechercheTa(QVBoxLayout* layout, QString txt, Element *elt);
 
 public:
-    void            update();//recharge les widgets (appres une modification d'une liste par exemple)
+    void            update();
 
 public slots:
    void             deleteElement();
+   void             addElement();
+   void             setElement();
    void             connection();
+   void             rechercheNom();
+   void             rechercheTags();
    void             updateActions();
    void             treeMenu( const QPoint & pos );
    void             newListGraphic(const QModelIndex & index);
